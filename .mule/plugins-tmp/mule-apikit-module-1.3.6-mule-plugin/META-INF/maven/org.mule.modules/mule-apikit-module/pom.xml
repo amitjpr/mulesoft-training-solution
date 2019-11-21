@@ -38,7 +38,7 @@
         <!--remove this APIKIT-1873 -->
         <commons.io.version>2.6</commons.io.version>
         <guava.version>27.1-jre</guava.version>
-        <jackson.version>2.9.9</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
         <libthrift.version>0.12.0</libthrift.version>
         
         <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
