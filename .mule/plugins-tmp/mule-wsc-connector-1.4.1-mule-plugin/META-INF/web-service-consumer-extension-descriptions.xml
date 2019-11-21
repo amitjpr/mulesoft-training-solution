@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension-documentation>
+    <configs>
+        <config name="config">
+            <description><![CDATA[Default configuration]]></description>
+            <parameters>
+                <parameter name="expirationPolicy">
+                    <description><![CDATA[Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit.]]></description>
+                </parameter>
+            </parameters>
+        </config>
+    </configs>
+    <connections>
+        <connection name="connection">
+            <description><![CDATA[ConnectionProvider that returns instances of WscSoapClient.]]></description>
+            <parameters>
+                <parameter name="soapVersion">
+                    <description><![CDATA[The soap version of the WSDL.]]></description>
+                </parameter>
+                <parameter name="mtomEnabled">
+                    <description><![CDATA[If should use the MTOM protocol to manage the attachments or not.]]></description>
+                </parameter>
+                <parameter name="customTransportConfiguration">
+                    <description><![CDATA[The transport configuration used to dispatch the SOAP messages.]]></description>
+                </parameter>
+                <parameter name="wsdlLocation">
+                    <description><![CDATA[The WSDL file URL remote or local.]]></description>
+                </parameter>
+                <parameter name="service">
+                    <description><![CDATA[The service name.]]></description>
+                </parameter>
+                <parameter name="port">
+                    <description><![CDATA[The port name.]]></description>
+                </parameter>
+                <parameter name="address">
+                    <description><![CDATA[The address of the web service.]]></description>
+                </parameter>
+                <parameter name="reconnection">
+                    <description><![CDATA[When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy]]></description>
+                </parameter>
+                <parameter name="signSecurityStrategy">
+                    <description><![CDATA[a sign WSS configuration]]></description>
+                </parameter>
+                <parameter name="verifySignatureSecurityStrategy">
+                    <description><![CDATA[a verify signature WSS configuration]]></description>
+                </parameter>
+                <parameter name="usernameTokenSecurityStrategy">
+                    <description><![CDATA[a usernameToken WSS configuration]]></description>
+                </parameter>
+                <parameter name="timestampSecurityStrategy">
+                    <description><![CDATA[a timestamp WSS configuration]]></description>
+                </parameter>
+                <parameter name="decryptSecurityStrategy">
+                    <description><![CDATA[a decrypt WSS configuration]]></description>
+                </parameter>
+                <parameter name="encryptSecurityStrategy">
+                    <description><![CDATA[an encrypt WSS configuration]]></description>
+                </parameter>
+                <parameter name="incomingTimestampSecurityStrategy">
+                    <description><![CDATA[a timestamp verification WSS configuration]]></description>
+                </parameter>
+            </parameters>
+        </connection>
+        <connection name="connection">
+            <description><![CDATA[ConnectionProvider that returns instances of WscSoapClient.]]></description>
+            <parameters>
+                <parameter name="soapVersion">
+                    <description><![CDATA[The soap version of the WSDL.]]></description>
+                </parameter>
+                <parameter name="mtomEnabled">
+                    <description><![CDATA[If should use the MTOM protocol to manage the attachments or not.]]></description>
+                </parameter>
+                <parameter name="customTransportConfiguration">
+                    <description><![CDATA[The transport configuration used to dispatch the SOAP messages.]]></description>
+                </parameter>
+                <parameter name="wsdlLocation">
+                    <description><![CDATA[The WSDL file URL remote or local.]]></description>
+                </parameter>
+                <parameter name="service">
+                    <description><![CDATA[The service name.]]></description>
+                </parameter>
+                <parameter name="port">
+                    <description><![CDATA[The port name.]]></description>
+                </parameter>
+                <parameter name="address">
+                    <description><![CDATA[The address of the web service.]]></description>
+                </parameter>
+                <parameter name="reconnection">
+                    <description><![CDATA[When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy]]></description>
+                </parameter>
+                <parameter name="signSecurityStrategy">
+                    <description><![CDATA[a sign WSS configuration]]></description>
+                </parameter>
+                <parameter name="verifySignatureSecurityStrategy">
+                    <description><![CDATA[a verify signature WSS configuration]]></description>
+                </parameter>
+                <parameter name="usernameTokenSecurityStrategy">
+                    <description><![CDATA[a usernameToken WSS configuration]]></description>
+                </parameter>
+                <parameter name="timestampSecurityStrategy">
+                    <description><![CDATA[a timestamp WSS configuration]]></description>
+                </parameter>
+                <parameter name="decryptSecurityStrategy">
+                    <description><![CDATA[a decrypt WSS configuration]]></description>
+                </parameter>
+                <parameter name="encryptSecurityStrategy">
+                    <description><![CDATA[an encrypt WSS configuration]]></description>
+                </parameter>
+                <parameter name="incomingTimestampSecurityStrategy">
+                    <description><![CDATA[a timestamp verification WSS configuration]]></description>
+                </parameter>
+            </parameters>
+        </connection>
+    </connections>
+    <extension name="Web Service Consumer">
+        <description><![CDATA[Web Service Consumer extension used to consume SOAP web services.]]></description>
+        <parameters/>
+    </extension>
+    <operations>
+        <operation name="consume">
+            <description><![CDATA[Consumes an operation from a SOAP Web Service.]]></description>
+            <parameters>
+                <parameter name="operation">
+                    <description><![CDATA[the name of the web service operation that aims to invoke.]]></description>
+                </parameter>
+                <parameter name="body">
+                    <description><![CDATA[The XML body to include in the SOAP message, with all the required parameters, or null if no params are required.]]></description>
+                </parameter>
+                <parameter name="headers">
+                    <description><![CDATA[The XML headers to include in the SOAP message.]]></description>
+                </parameter>
+                <parameter name="attachments">
+                    <description><![CDATA[The attachments to include in the SOAP request.]]></description>
+                </parameter>
+                <parameter name="transportHeaders">
+                    <description><![CDATA[A group of transport headers that will be bounded with the transport request.]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+    </operations>
+    <sources/>
+    <types>
+        <type name="org.mule.extension.ws.api.SoapAttributes">
+            <description><![CDATA[The attributes returned by the consume operation, it carries the protocol specific headers (i.e. HTTP headers) and
+ additional transport data (for example HTTP status line) bounded to the response.
+
+ @since 1.1.2]]></description>
+            <parameters>
+                <parameter name="protocolHeaders">
+                    <description><![CDATA[The protocol headers bundled in the response.]]></description>
+                </parameter>
+                <parameter name="additionalTransportData">
+                    <description><![CDATA[The additional transport data bundled in the response.]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.SoapOutputEnvelope">
+            <description><![CDATA[Represents the response of the consume operation. Bundles the SOAP body, SOAP Headers and Mime Attachments if there are any.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="attachments">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="body">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="bodyCharset">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="bodyString">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="headers">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssDecryptSecurityStrategyAdapter">
+            <description><![CDATA[Decrypts an encrypted SOAP response, using the private key of the key-store in the provided TLS context.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="keyStoreConfiguration">
+                    <description><![CDATA[The keystore to use when decrypting the message.]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssEncryptSecurityStrategyAdapter">
+            <description><![CDATA[Verifies the signature of a SOAP response, using certificates of the trust-store in the provided TLS context.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="keyStoreConfiguration">
+                    <description><![CDATA[The keystore to use when encrypting the message.]]></description>
+                </parameter>
+                <parameter name="EncryptionAlgorithmsConfiguration">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssIncomingTimestampSecurityStrategyAdapter">
+            <description><![CDATA[Verifies the timestamp of an incoming SOAP message.
+ <p>
+ This should be used when an incoming soap message is encrypted, signed, etc, and also includes a timestamp that express
+ the creation and expiration of the security semantic of the message.
+
+ @see <a href="http://docs.oasis-open.org/wss/v1.1/wss-v1.1-spec-errata-os-SOAPMessageSecurity.htm#_Toc118717167">Security Timestamps</a>
+
+ @since 1.4.0]]></description>
+            <parameters>
+                <parameter name="futureTimeToLive">
+                    <description><![CDATA[Specifies the time in the future within which the Created time of an incoming Timestamp is valid. The default
+ value is "60", to avoid problems where clocks are slightly askew. To reject all future-created Timestamps, set
+ this value to "0".]]></description>
+                </parameter>
+                <parameter name="futureTimeToLiveUnit">
+                    <description><![CDATA[A #futureTimeToLive parameter.
+ <p>
+ Defaults to SECONDS]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssSignSecurityStrategyAdapter">
+            <description><![CDATA[Signs the SOAP request that is being sent, using the private key of the key-store in the provided TLS context.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="keyStoreConfiguration">
+                    <description><![CDATA[The keystore to use when signing the message.]]></description>
+                </parameter>
+                <parameter name="signAlgorithmConfiguration">
+                    <description><![CDATA[The algorithms to use on the signing.]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssTimestampSecurityStrategyAdapter">
+            <description><![CDATA[Bundles the outgoing SOAP message that it's being built with a timestamp that carries the creation.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="timeToLive">
+                    <description><![CDATA[The time difference between creation and expiry time in the time unit specified in timeToLiveUnit.
+ After this time the message is invalid.
+ <p>
+ This parameter values must be greater or equal to 1 second (or similar in other unit).
+ Values lower than 1 second will end up in 1 second timestamp.]]></description>
+                </parameter>
+                <parameter name="timeToLiveUnit">
+                    <description><![CDATA[A #timeToLive parameter.
+ <p>
+ Defaults to SECONDS]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssUsernameTokenSecurityStrategyAdapter">
+            <description><![CDATA[Provides the capability to authenticate using Username and Password with a SOAP service by adding the UsernameToken
+ element in the SOAP request.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="username">
+                    <description><![CDATA[The username required to authenticate with the service.]]></description>
+                </parameter>
+                <parameter name="password">
+                    <description><![CDATA[The password for the provided username required to authenticate with the service.]]></description>
+                </parameter>
+                <parameter name="passwordType">
+                    <description><![CDATA[A #password parameter.]]></description>
+                </parameter>
+                <parameter name="addNonce">
+                    <description><![CDATA[Specifies a if a cryptographically random nonce should be added to the message.]]></description>
+                </parameter>
+                <parameter name="addCreated">
+                    <description><![CDATA[Specifies if a timestamp should be created to indicate the creation time of the message.]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.security.WssVerifySignatureSecurityStrategyAdapter">
+            <description><![CDATA[Verifies the signature of a SOAP response, using certificates of the trust-store in the provided TLS context.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="trustStoreConfiguration">
+                    <description><![CDATA[The truststore to use to verify the signature.]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.transport.CustomHttpTransportConfiguration">
+            <description><![CDATA[Provides the capability to send soap messages using a custom HTTP Requester configuration.
+
+ @since 1.1]]></description>
+            <parameters>
+                <parameter name="requesterConfig">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.ws.api.transport.CustomTransportConfiguration">
+            <description><![CDATA[Contract for objects that enables the use of a custom transport executing operations of other plugins by
+ using the ExtensionsClient to send soap the messages.
+
+ @since 1.0]]></description>
+            <parameters/>
+        </type>
+        <type name="org.mule.extension.ws.api.transport.DefaultHttpTransportConfiguration">
+            <description><![CDATA[DTO subtype used to instantiate DefaultHttpTransportConfigurationImpl objects.
+
+ @since 1.1]]></description>
+            <parameters>
+                <parameter name="timeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+    </types>
+</extension-documentation>

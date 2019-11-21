@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/root",
+  "definitions": {
+    "root": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "code",
+          "price",
+          "departureDate",
+          "origin",
+          "destination",
+          "emptySeats"
+        ],
+        "properties": {
+          "ID": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "departureDate": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "emptySeats": {
+            "type": "integer"
+          },
+          "plane": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "type",
+              "totalSeats"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "totalSeats": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

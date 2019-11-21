@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension-documentation>
+    <configs>
+        <config name="config">
+            <description><![CDATA[Default configuration]]></description>
+            <parameters>
+                <parameter name="i18n">
+                    <description><![CDATA[Allows to configure I18n for the standard error messages]]></description>
+                </parameter>
+                <parameter name="expirationPolicy">
+                    <description><![CDATA[Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit.]]></description>
+                </parameter>
+            </parameters>
+        </config>
+    </configs>
+    <connections/>
+    <extension name="Validation">
+        <description><![CDATA[A module which allows to perform data validations. If the validation fails, an Error is thrown. The error type might vary but it will always be a child of VALIDATION:VALIDATION]]></description>
+        <parameters/>
+    </extension>
+    <operations>
+        <operation name="isBlankString">
+            <description><![CDATA[Validates that value is a blank String.]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to check]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isElapsed">
+            <description><![CDATA[Validates the amount of time that has elapsed since the moment in the since parameter is greater than an specified amount of time.]]></description>
+            <parameters>
+                <parameter name="time">
+                    <description><![CDATA[the interval size]]></description>
+                </parameter>
+                <parameter name="timeUnit">
+                    <description><![CDATA[the interval unit (as a TimeUnit)]]></description>
+                </parameter>
+                <parameter name="since">
+                    <description><![CDATA[the time to validate]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isEmail">
+            <description><![CDATA[Validates that the email address is valid]]></description>
+            <parameters>
+                <parameter name="email">
+                    <description><![CDATA[an email address]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isEmptyCollection">
+            <description><![CDATA[Validates that value is an empty collection.]]></description>
+            <parameters>
+                <parameter name="values">
+                    <description><![CDATA[the value to check]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isFalse">
+            <description><![CDATA[Validates that the given value is false]]></description>
+            <parameters>
+                <parameter name="expression">
+                    <description><![CDATA[the boolean to test]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isIp">
+            <description><![CDATA[Validates that an ip address represented as a String is valid]]></description>
+            <parameters>
+                <parameter name="ip">
+                    <description><![CDATA[the ip address to validate]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNotBlacklistedIp">
+            <description><![CDATA[Validates that a ipAddress is not present in the ipList.]]></description>
+            <parameters>
+                <parameter name="ipAddress">
+                    <description><![CDATA[the address to validate]]></description>
+                </parameter>
+                <parameter name="blackList">
+                    <description><![CDATA[the list of disallowed addresses]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNotBlankString">
+            <description><![CDATA[Validates that value is not a blank String.]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the String to check]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNotElapsed">
+            <description><![CDATA[Validates the amount of time that has elapsed since the moment in the since parameter is greater than an specified amount of time.]]></description>
+            <parameters>
+                <parameter name="time">
+                    <description><![CDATA[the interval size]]></description>
+                </parameter>
+                <parameter name="timeUnit">
+                    <description><![CDATA[the interval unit (as a TimeUnit)]]></description>
+                </parameter>
+                <parameter name="since">
+                    <description><![CDATA[the time to validate]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNotEmptyCollection">
+            <description><![CDATA[Validates that value is not an empty collection.]]></description>
+            <parameters>
+                <parameter name="values">
+                    <description><![CDATA[the value to check]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNotNull">
+            <description><![CDATA[Validates that the given value is not null. Keep in mind that the definition of null may vary depending on the value's mimeType. For example, for an application/java mimeType, null means a blank pointer. However, is the mimeType is application/json then the String &quot;null&quot; is also a null value.]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to test]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNull">
+            <description><![CDATA[Validates that the given value is null. Keep in mind that the definition of null may vary depending on the value's mimeType. For example, for an application/java mimeType, null means a blank pointer. However, is the mimeType is application/json then the String &quot;null&quot; is also a null value.]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to test]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isNumber">
+            <description><![CDATA[Receives a numeric value as a String and validates that it can be parsed per the rules of a numberType]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to be tested]]></description>
+                </parameter>
+                <parameter name="locale">
+                    <description><![CDATA[The locale to use for the format. If not provided it defaults to the system Locale]]></description>
+                </parameter>
+                <parameter name="pattern">
+                    <description><![CDATA[The pattern used to format the value]]></description>
+                </parameter>
+                <parameter name="minValue">
+                    <description><![CDATA[If provided, check that the parsed value is greater or equal than this value]]></description>
+                </parameter>
+                <parameter name="maxValue">
+                    <description><![CDATA[If provided, check that the parsed value is less or equal than this value]]></description>
+                </parameter>
+                <parameter name="numberType">
+                    <description><![CDATA[the type of number to test value against]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isTime">
+            <description><![CDATA[Validates that a time in String format is valid for the given pattern and locale. If no pattern is provided, then the locale's default will be used]]></description>
+            <parameters>
+                <parameter name="time">
+                    <description><![CDATA[A date in String format]]></description>
+                </parameter>
+                <parameter name="locale">
+                    <description><![CDATA[the locale of the String]]></description>
+                </parameter>
+                <parameter name="pattern">
+                    <description><![CDATA[the pattern for the date]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isTrue">
+            <description><![CDATA[Validates that the given value is true]]></description>
+            <parameters>
+                <parameter name="expression">
+                    <description><![CDATA[the boolean to test]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isUrl">
+            <description><![CDATA[Validates that url is a valid one]]></description>
+            <parameters>
+                <parameter name="url">
+                    <description><![CDATA[the URL to validate as a String]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="isWhitelistedIp">
+            <description><![CDATA[Validates that a ipAddress is present in the ipList.]]></description>
+            <parameters>
+                <parameter name="ipAddress">
+                    <description><![CDATA[the address to validate]]></description>
+                </parameter>
+                <parameter name="whiteList">
+                    <description><![CDATA[the list of allowed addresses]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="matchesRegex">
+            <description><![CDATA[Validates that value matches the regex regular expression]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to check]]></description>
+                </parameter>
+                <parameter name="regex">
+                    <description><![CDATA[the regular expression to check against]]></description>
+                </parameter>
+                <parameter name="caseSensitive">
+                    <description><![CDATA[when true matching is case sensitive, otherwise matching is case in-sensitive]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="validateSize">
+            <description><![CDATA[Validates that value has a size between certain inclusive boundaries. This validator is capable of handling instances of String, Collection, Map and arrays]]></description>
+            <parameters>
+                <parameter name="value">
+                    <description><![CDATA[the value to validate]]></description>
+                </parameter>
+                <parameter name="min">
+                    <description><![CDATA[the minimum expected length (inclusive, defaults to zero)]]></description>
+                </parameter>
+                <parameter name="max">
+                    <description><![CDATA[the maximum expected length (inclusive). Leave unspecified or null to allow any max length]]></description>
+                </parameter>
+                <parameter name="message">
+                    <description><![CDATA[Specifies the message that is to be notified to the user if the validation fails. It's marked as not dynamic to allow eager evaluation of the expression in case that the validation is successful and the message is not needed. Components consuming this value are to manually check if this is an expression and evaluate it in case that the validation failed]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="all">
+            <description><![CDATA[Perform a list of nested validation operations and informs only one VALIDATION:MULTIPLE error which summarizes all of the found errors (if any).]]></description>
+            <parameters>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="any">
+            <description><![CDATA[Perform a list of nested validation operations and informs only one VALIDATION:MULTIPLE error which summarizes all of the found errors (if all failed).]]></description>
+            <parameters>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+    </operations>
+    <sources/>
+    <types>
+        <type name="org.mule.extension.validation.api.I18NConfig">
+            <description><![CDATA[A simple object to configure internationalization.
+
+ @since 1.0]]></description>
+            <parameters>
+                <parameter name="bundlePath">
+                    <description><![CDATA[The path to a bundle file containing the messages. If null then the platform will choose a default one]]></description>
+                </parameter>
+                <parameter name="locale">
+                    <description><![CDATA[The locale of the null the platform will choose the system default]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="org.mule.extension.validation.api.IpFilterList">
+            <description><![CDATA[List of IPs for filter configuration.
+
+ @since 1.1]]></description>
+            <parameters>
+                <parameter name="ips">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+    </types>
+</extension-documentation>

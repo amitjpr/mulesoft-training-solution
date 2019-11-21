@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/schema",
+  "definitions": {
+    "schema": {
+      "enum": [
+        "SFO",
+        "LAX",
+        "CLE"
+      ],
+      "type": "string"
+    }
+  }
+}
