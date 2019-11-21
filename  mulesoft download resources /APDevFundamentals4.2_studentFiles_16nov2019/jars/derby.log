@@ -1,0 +1,27 @@
+Fri Nov 15 14:35:36 EST 2019 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Fri Nov 15 14:35:39 EST 2019 : Log Connections turned on.
+Fri Nov 15 14:35:39 EST 2019 : Connection number: 2.
+----------------------------------------------------------------
+Fri Nov 15 14:35:39 EST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016e-7090-4f63-000042660b18 
+on database directory memory:/Volumes/GoogleDrive/My Drive/Shared Training Docs/Training Portfolio/Course Development/Courses/Development/APDevFundamentals/V4 APDevFundamentals4 (4.2) CURRENT/ILT/V4.5 APDev - Fundamentals (4.2) INDEV/APDevFundamentals4.2_studentFiles/jars/training with class loader org.springframework.boot.loader.LaunchedURLClassLoader@27716f4 
+Loaded from jar:file:/Volumes/GoogleDrive/My%20Drive/Shared%20Training%20Docs/Training%20Portfolio/Course%20Development/Courses/Development/APDevFundamentals/V4%20APDevFundamentals4%20(4.2)%20CURRENT/ILT/V4.5%20APDev%20-%20Fundamentals%20(4.2)%20INDEV/APDevFundamentals4.2_studentFiles/jars/mulesoft-training-services-1.7.0.jar!/lib/derby-10.14.2.0.jar!/
+java.vendor=AdoptOpenJDK
+java.runtime.version=1.8.0_222-b10
+user.dir=/Volumes/GoogleDrive/My Drive/Shared Training Docs/Training Portfolio/Course Development/Courses/Development/APDevFundamentals/V4 APDevFundamentals4 (4.2) CURRENT/ILT/V4.5 APDev - Fundamentals (4.2) INDEV/APDevFundamentals4.2_studentFiles/jars
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.13.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+Fri Nov 15 14:35:39 EST 2019 Thread[DRDAConnThread_2,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {2}), Apache Derby Network Server connected to database memory:training;create=true
+Fri Nov 15 14:35:40 EST 2019 : Connection number: 3.
+Fri Nov 15 14:35:40 EST 2019 Thread[DRDAConnThread_2,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {3}), Apache Derby Network Server connected to database memory:training;create=true
+Fri Nov 15 14:38:31 EST 2019 : Connection number: 4.
+Fri Nov 15 14:38:31 EST 2019 Thread[DRDAConnThread_3,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {4}), Apache Derby Network Server connected to database memory:training
+Fri Nov 15 14:38:54 EST 2019 : Connection number: 5.
+Fri Nov 15 14:38:54 EST 2019 Thread[DRDAConnThread_3,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {5}), Apache Derby Network Server connected to database memory:training
+Fri Nov 15 15:03:26 EST 2019 : Connection number: 6.
+Fri Nov 15 15:03:26 EST 2019 Thread[DRDAConnThread_3,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {6}), Apache Derby Network Server connected to database memory:training;create=true
+Fri Nov 15 15:18:23 EST 2019 : Connection number: 7.
+Fri Nov 15 15:18:23 EST 2019 Thread[DRDAConnThread_4,5,derby.daemons] (DATABASE = memory:training), (DRDAID = {7}), Apache Derby Network Server connected to database memory:training;create=true
