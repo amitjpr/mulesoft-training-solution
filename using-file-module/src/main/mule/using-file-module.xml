@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="6e2790d7-8af4-4c65-bbf7-bb8d0102c213" >
+		<file:connection workingDir="/Users/amiagraw1/Documents/muleFilesTest" />
+	</file:config>
+	<flow name="read-file-in-5sec-interval" doc:id="616c7b9b-0620-476a-a7bc-61e47bd734ed" >
+		<file:listener doc:name="On New or Updated File" doc:id="57b7b8f7-66e5-4511-bc56-4ac3e92e5206" config-ref="File_Config" directory="input" recursive="false">
+			<scheduling-strategy >
+				<fixed-frequency/>
+			</scheduling-strategy>
+		</file:listener>
+		<logger level="INFO" doc:name="Logger" doc:id="1f9f7967-a247-4470-be98-4f62aef8f680" message="#[payload]"/>
+	</flow>
+</mule>

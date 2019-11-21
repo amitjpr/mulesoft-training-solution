@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="e6f231cb-378b-477f-9ed3-8d8d097438c5" >
+		<http:request-connection host="jsonplaceholder.typicode.com" protocol="HTTPS"/>
+	</http:request-config>
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d0147150-2379-4952-88a8-eba2ec80fe32" basePath="/webservices" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mainflow" doc:id="e97400d5-27d4-449e-a4f7-2ad426cb4ea2" >
+		<http:listener doc:name="Listener" doc:id="e9645b6e-3d16-45cd-8e3c-f4f743de8039" config-ref="HTTP_Listener_config" path="/allpost/{pid}"/>
+		<choice doc:name="Choice" doc:id="7a4de188-2aab-47df-8643-60906d0f65d5" >
+			<when expression="#[attributes.uriParams.pid &lt; 1]">
+				<flow-ref doc:name="Flow Reference" doc:id="9d984f65-4fc4-4e88-a1e3-2ca8c457bccc" name="getallposts"/>
+			</when>
+			<when expression="#[attributes.uriParams.pid &gt;0]">
+				<flow-ref doc:name="Flow Reference" doc:id="414ae54d-8889-40ce-b1f8-26ff4ac98aa8" name="getpostsbyid" />
+			</when>
+			<otherwise>
+				<set-payload value="invalid request" doc:name="Set Payload" doc:id="45018365-f09b-4218-b631-9e168461f927" />
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="mainflow-getallpost" doc:id="05503e92-530b-47ee-8685-57a91b6fa8bc" >
+		<http:listener doc:name="Listener" doc:id="bda3e98b-c244-439b-b43c-b76c2ecaca35" config-ref="HTTP_Listener_config" path="/posts"/>
+		<flow-ref doc:name="Flow Reference" doc:id="3a65c266-1f7b-488f-a658-c953b8ac43a5" name="getallposts"/>
+	</flow>
+	<flow name="mainflow-getbyid" doc:id="d997129d-2df1-4e45-af6f-fbe1b0c1e882" >
+		<http:listener doc:name="Listener" doc:id="767f9316-3bda-461d-9d84-bde0e4ab575c" config-ref="HTTP_Listener_config" path="/postbyid/{pid}"/>
+		<flow-ref doc:name="Flow Reference" doc:id="fc0034dd-aa20-4263-a3a9-aa5a7c8164ae" name="getpostsbyid"/>
+	</flow>
+	<flow name="getpostsbyid" doc:id="ea4c317a-c654-4769-9001-68497ccb9d6b" >
+		<http:request method="GET" doc:name="Request" doc:id="5882257d-9dab-4917-b5fc-2c1f3f418717" config-ref="HTTP_Request_configuration" path="/posts/{postId}">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	postId : attributes.uriParams.pid
+}]]]></http:uri-params>
+		</http:request>
+	</flow>
+	<flow name="getallposts" doc:id="7352b11a-fc74-42d5-8c0f-66f66172087e" >
+		<http:request method="GET" doc:name="Request" doc:id="9419855c-f571-4562-8330-026e38583027" config-ref="HTTP_Request_configuration" path="/posts"/>
+	</flow>
+</mule>

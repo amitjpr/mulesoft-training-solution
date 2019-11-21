@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:ftp="http://www.mulesoft.org/schema/mule/ftp"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ftp http://www.mulesoft.org/schema/mule/ftp/current/mule-ftp.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="15793b68-f6f6-4c89-a38f-1bdf1f77e0d7" >
+		<file:connection workingDir="/Users/amiagraw1/Documents/muleFilesTest" />
+	</file:config>
+	<flow name="transform-csv-dataFlow" doc:id="3bda50df-618a-4a62-8c2a-1a0b8d038e05" >
+		<file:listener doc:name="On New or Updated File" doc:id="9b9a174e-3fce-4ae8-a1b1-ae6a68d62b30" config-ref="File_Config" directory="input" watermarkMode="MODIFIED_TIMESTAMP">
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</file:listener>
+		<ee:transform doc:name="Transform Message" doc:id="89d4a318-8eaa-459a-9a07-d06fc289289c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<foreach doc:name="For Each" doc:id="fd30b082-63fe-4a25-92c0-06931271e8d2" >
+			<logger level="INFO" doc:name="Logger" doc:id="6192671d-4b17-4243-b120-f2bf0e8c8c83" message="#[payload]" />
+		</foreach>
+	</flow>
+</mule>

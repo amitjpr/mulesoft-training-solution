@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3c048707-8420-4560-afbf-fff632d5cc5e" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="hello-world-mule4Flow" doc:id="abf93448-ef9d-490f-8796-e93a8c82cdaf" >
+		<http:listener doc:name="Listener" doc:id="a3702cd8-42b1-43d5-98c2-e8c83f0f30de" config-ref="HTTP_Listener_config" path="/helloworld/{uname}"/>
+		<set-variable value="#[message.attributes.uriParams.uname]" doc:name="Set Variable" doc:id="31323599-a8da-4d43-a2fb-894bc209d7f2" variableName="uriUser"/>
+		<set-variable value="#[attributes.queryParams.user]" doc:name="Set Variable" doc:id="367cdfcf-8a26-4353-9ef9-b2c01b885709" variableName="queryuser"/>
+		<set-payload value="#['Hello World!' ++ ' Today is ' ++ now() ++'    '++ message.attributes.queryParams.user]" doc:name="Set Payload" doc:id="c95968bf-5b93-480c-8774-fa598b1234ec" mimeType="text/plain"/>
+		<logger level="INFO" doc:name="Logger" doc:id="9e8247ac-ce88-41db-85ef-eb59c664b10b" message="#[message.payload]"/>
+		<set-payload doc:name="Set Payload" doc:id="d8473269-15f5-4b8e-a9d9-68a4a95c3541" value="#[message.payload ++ '    next set payload --&gt;&gt;&gt; hello ' ++ message.attributes.uriParams.uname]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e9c6e932-4c8a-4b9b-8c45-07b6729270d5" message="#[message.payload]"/>
+		<set-payload value="#[message.payload ++'URI '++ vars.uriUser ++ '  query' ++ vars.queryuser]" doc:name="Set Payload" doc:id="f19d67c3-ecf8-49d3-aa1d-6f7e38768733" />
+	</flow>
+	<flow name="hello-world-mule4Flow1" doc:id="0e3a5730-1135-486e-8832-2570a9b8e638" >
+		<http:listener doc:name="Listener" doc:id="a67cfcf5-b677-42f9-a25c-ec3b9353f4e7" config-ref="HTTP_Listener_config" path="/hello"/>
+		<set-payload value="Hello World" doc:name="Set Payload" doc:id="ed51dc61-5265-4acf-a02b-752d21f3f0df" />
+		<logger level="INFO" doc:name="Logger" doc:id="261debb9-7958-481b-9ab2-49669bdee128" message="#[message.payload]"/>
+	</flow>
+	<flow name="hello-world-mule4Flow2" doc:id="3a040b17-0106-4948-af84-dd32fa96f8ae">
+		<http:listener doc:name="Listener" doc:id="c0979c21-5e30-428a-a604-407d639c6ebd" config-ref="HTTP_Listener_config" path="/helloQueryParam" />
+		<set-payload value="#['Hello ' ++ attributes.queryParams.user]" doc:name="Set Payload" doc:id="b0fc7db3-caa1-4b5c-aed3-ff9646b2cbe2" />
+		<logger level="INFO" doc:name="Logger" doc:id="3f37aafa-637d-4f9a-af5a-02c5f9284b2c" message="#[message.payload]" />
+	</flow>
+	<flow name="hello-world-mule4Flow3" doc:id="503a0dde-77d4-48e8-b6e8-f13077b02649" >
+		<http:listener doc:name="Listener" doc:id="32994526-122a-44da-800f-8bdb76daf465" config-ref="HTTP_Listener_config" path="/hellouriparam/{user}"/>
+		<set-payload value="#['hello '++ attributes.uriParams.user]" doc:name="Set Payload" doc:id="a12db09a-7936-4d13-a55a-eb0819da3dc6" />
+		<logger level="INFO" doc:name="Logger" doc:id="b397388c-1548-49d7-a0c6-8c2e4722e9de" message="#[message.payload]"/>
+	</flow>
+</mule>

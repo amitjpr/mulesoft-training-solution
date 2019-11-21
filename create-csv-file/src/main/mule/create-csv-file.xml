@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="13410cd7-1f67-4fdb-b790-3eabf9c76f40" basePath="wfile">
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="2b72c1bc-bc13-49a6-ae3c-06ca3053876d" >
+		<file:connection workingDir="/Users/amiagraw1/Documents/muleFilesTest" />
+	</file:config>
+	<flow name="create-csv-fileFlow" doc:id="c72e848a-a53b-45f2-8ddc-c271d41e4a06" >
+		<http:listener doc:name="Listener" doc:id="b9ad5671-4cb8-4107-82f6-3020d466d0a6" config-ref="HTTP_Listener_config" path="/write"/>
+		<ee:transform doc:name="Transform Message" doc:id="78baeb80-1f53-4b97-924b-ee5b934b3a57" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/csv headerLineNumber = 0 , header = true
+---
+[{
+	product_id: attributes.queryParams.pid as String,
+	product_name: attributes.queryParams.pname as String,
+	product_price: attributes.queryParams.price as String
+}]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<file:write doc:name="Write" doc:id="405c9348-e473-424d-96ca-a82e8dd6ef7e" config-ref="File_Config" path="output/newcsv.csv" mode="APPEND"/>
+	</flow>
+</mule>

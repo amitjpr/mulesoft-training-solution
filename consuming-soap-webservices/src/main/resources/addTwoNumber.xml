@@ -1,0 +1,4 @@
+<tem:Add xmlns:tem="http://tempuri.org/">
+         <tem:intA>#[attributes.queryParams.a]</tem:intA>
+         <tem:intB>#[attributes.queryParams.b]</tem:intB>
+      </tem:Add>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:java="http://www.mulesoft.org/schema/mule/java" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="01b0fe64-6041-4bb3-8fd1-9669d6d42f7b" basePath="/helloJava" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="call-java-class-methods-uriparam" doc:id="ba313cd4-5418-4b0c-9055-52144dd5f709" >
+		<http:listener doc:name="Listener" doc:id="dbfb4690-0765-477e-8f6f-c33d5842fcc4" config-ref="HTTP_Listener_config" path="/staticMethod"/>
+		<java:invoke-static doc:name="Invoke static" doc:id="0853515e-2e26-44bf-835f-603e27c891ed" class="com.training.mule4.MyJavaClass" method="sayHelloToMule(String)">
+			<java:args ><![CDATA[#[%dw 2.0
+output application/java
+---
+{
+	name: attributes.uriParams.name as String
+}]]]></java:args>
+		</java:invoke-static>
+	</flow>
+	<flow name="call-java-class-methods-queryparam" doc:id="932a0c19-4b25-4448-8cfe-af2397ec130c" >
+		<http:listener doc:name="Listener" doc:id="46f0fc2f-f41d-46ce-be5e-3c5096ad4efa" config-ref="HTTP_Listener_config" path="/staticmethod"/>
+		<java:invoke-static method="sayHelloToMule(java.lang.String)" doc:name="Invoke static" doc:id="fefbeb5a-8bdd-4d44-bec3-16c5659a6117" class="com.training.mule4.MyJavaClass">
+			<java:args ><![CDATA[#[%dw 2.0
+output application/java
+---
+{
+	name: attributes.queryParams.lname as String
+}]]]></java:args>
+		</java:invoke-static>
+	</flow>
+	<flow name="call-java-class-instancemethod" doc:id="7b5db863-219b-4c47-bf5e-de02112d3688" >
+		<http:listener doc:name="Listener" doc:id="0a55b73c-3cd8-48dd-896d-be82d322a266" config-ref="HTTP_Listener_config" path="/javainstancem"/>
+		<java:new constructor="MyJavaClass()" doc:name="New" doc:id="f4d706ec-12d3-461c-8bdc-7502d6d5f8da" class="com.training.mule4.MyJavaClass" target="myClassObject"/>
+		<java:invoke method="sayHelloToMule1(java.lang.String)" doc:name="Invoke" doc:id="84812fbe-4b9d-433b-ac13-acc4a8a30f1c" class="com.training.mule4.MyJavaClass" instance="#[vars.myClassObject]">
+			<java:args ><![CDATA[#[%dw 2.0
+output application/java
+---
+{
+	name: attributes.queryParams.lname as String
+}]]]></java:args>
+		</java:invoke>
+		<logger level="INFO" doc:name="Logger" doc:id="5e930cef-314e-4569-b392-dbab8c8d6b3e" message="#[message.payload]"/>
+	</flow>
+</mule>
