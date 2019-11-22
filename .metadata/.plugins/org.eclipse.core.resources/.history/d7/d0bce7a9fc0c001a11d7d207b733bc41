@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="99fd014b-8b3a-463c-8085-e79e207bb6ec" >
+		<file:connection workingDir="/Users/amiagraw1/Downloads/mulesoft/test" />
+	</file:config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="41335728-23f9-4610-9091-09d1e71a1908" >
+		<db:my-sql-connection host="iltdb.learn.mulesoft.com" port="3306" user="mule" password="mule" database="training" />
+	</db:config>
+	<flow name="accounts-filehandlingFlow" doc:id="e2a18635-0207-4513-8f80-8bd34dd0e4e9" >
+		<db:listener doc:name="On Table Row" doc:id="cbadfa84-0db6-4e20-a253-9ead7c28773d" config-ref="Database_Config" table="00accounts">
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</db:listener>
+	</flow>
+	<flow name="getCSVaccounts" doc:id="be464432-9afa-43c6-8f0a-bc8b807262a1" >
+		<file:listener doc:name="On New or Updated File" doc:id="f0930745-c817-4d7f-8f8f-d6fbeb1bf476" directory="input" config-ref="File_Config" moveToDirectory="output" renameTo='#[attributes.fileName ++ ".backup"]'>
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</file:listener>
+		<logger level="INFO" doc:name="payload" doc:id="d906aaa2-99e5-49ec-a358-7681ccf309f0" message="#[payload]"/>
+	</flow>
+	<flow name="getCSVaccountandtransformtojson" doc:id="3eb63587-bb39-4d64-a4c3-61e48381d03f" >
+		<file:listener doc:name="On New or Updated File" doc:id="1a5f1243-be5c-43e7-8c35-4705dabb6289" config-ref="File_Config" directory="input" moveToDirectory="output" renameTo='#[attributes.fileName ++ ".transform.backup"]'>
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</file:listener>
+		<ee:transform doc:name="Transform Message" doc:id="c7c8ff9c-2d0a-4b08-ae6a-e767a24d3947" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="34fbcdd4-28fa-43f9-bf5f-35c61ef6a3ef" message="#[payload]"/>
+	</flow>
+</mule>

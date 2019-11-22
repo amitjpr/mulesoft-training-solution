@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="ConcatenateTwoStringsIntoASingleString" doc:id="9d29030a-f6c6-4693-a433-ea2ca6312884" >
+		<ee:transform doc:name="Transform Message" doc:id="0fcec81d-173d-4266-88e4-1e23913b1cfe" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+'Hello' ++ ' World']]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="dataweave_samplesFlow" doc:id="04a0af62-a8f6-43c7-9728-0fa867a7c931" >
+		<ee:transform doc:name="Transform Message" doc:id="cd98f197-65ea-4ef1-bae4-4899952129db" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{myString: ("hello" ++ "World") 
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

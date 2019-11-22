@@ -1,0 +1,36 @@
+{
+  "extensionModelLoaderDescriptor": {
+    "id": "java",
+    "attributes": {
+      "type": "org.mule.extensions.jms.internal.JmsConnector",
+      "version": "1.6.2"
+    }
+  },
+  "name": "JMS",
+  "requiredProduct": "MULE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "privilegedExportedPackages": [],
+      "privilegedArtifactIds": [],
+      "exportedPackages": [
+        "org.mule.extensions.jms.api.connection.factory.activemq",
+        "org.mule.extensions.jms.api.config",
+        "org.mule.extensions.jms.api.exception",
+        "org.mule.extensions.jms.api.ack",
+        "org.mule.extensions.jms.api.connection.factory.jndi",
+        "org.mule.extensions.jms.api.destination",
+        "org.mule.extensions.jms.api.message",
+        "org.mule.extensions.jms.api",
+        "org.mule.extensions.jms.api.connection.caching",
+        "org.mule.extensions.jms.api.connection"
+      ],
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  },
+  "minMuleVersion": "4.1.1"
+}

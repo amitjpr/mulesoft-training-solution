@@ -2,6 +2,21 @@
   "sampleData": {
     "d72796b4-67a8-449d-a927-126e11368d93": {
       "payload": "sample_data/object.dwl"
+    },
+    "51040538-78f3-4672-a2bc-e57312c6e373": {
+      "payload": "sample_data/json.json"
+    },
+    "9f952d6a-e9d4-49de-a94e-c77bceef5394": {
+      "payload": "sample_data/list_json.json"
+    },
+    "2c965056-d470-4fa0-8981-394d475f6e59": {
+      "payload": "sample_data/listallflightsresponse.xml"
+    },
+    "3b9ff0be-b19c-499b-8869-42f39eef2cac": {
+      "payload": "sample_data/listAllFlightsResponse_1.xml"
+    },
+    "1abf8c78-0f4a-4086-9a2d-2c57466999b3": {
+      "payload": "sample_data/object_1.dwl"
     }
   }
 }
