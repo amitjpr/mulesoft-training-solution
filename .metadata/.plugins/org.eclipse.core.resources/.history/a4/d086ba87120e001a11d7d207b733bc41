@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
-	xmlns:db="http://www.mulesoft.org/schema/mule/db"
-	xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
-http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<file:config name="File_Config" doc:name="File Config" doc:id="99fd014b-8b3a-463c-8085-e79e207bb6ec" >
 		<file:connection workingDir="/Users/amiagraw1/Downloads/mulesoft/test" />
 	</file:config>
@@ -38,9 +37,6 @@ output application/csv header=false
 		</file:listener>
 		<logger level="INFO" doc:name="payload" doc:id="d906aaa2-99e5-49ec-a358-7681ccf309f0" message="#[payload]"/>
 	</flow>
-	<flow name="accounts-filehandlingFlow1" doc:id="2ddf5b8b-3b59-479f-a81a-e99663dc67b1" >
-		<validation:is-not-elapsed time="0" doc:name="Is not elapsed" doc:id="c20f0f36-6e23-48f6-8a7c-fc65b5f55042" />
-	</flow>
 	<flow name="getCSVaccountandtransformtojson" doc:id="3eb63587-bb39-4d64-a4c3-61e48381d03f" >
 		<file:listener doc:name="On New or Updated File" doc:id="1a5f1243-be5c-43e7-8c35-4705dabb6289" config-ref="File_Config" directory="input" moveToDirectory="output" renameTo='#[attributes.fileName ++ ".transformbackup"]'>
 			<scheduling-strategy >
@@ -50,15 +46,11 @@ output application/csv header=false
 		<ee:transform doc:name="Transform Message" doc:id="c7c8ff9c-2d0a-4b08-ae6a-e767a24d3947" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
+output application/json
 ---
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<foreach doc:name="For Each" doc:id="06b13eb0-d161-4534-b838-b7ee83562ebb" >
-			<set-payload value="#[payload]" doc:name="Set Payload" doc:id="a6ae1662-3264-4458-b224-5b1beb4b9646" />
-			<logger level="INFO" doc:name="Logger" doc:id="5de0eb5c-edec-425a-b4f2-5297ebb618a0" message="#[payload]"/>
-		</foreach>
 		<logger level="INFO" doc:name="Logger" doc:id="34fbcdd4-28fa-43f9-bf5f-35c61ef6a3ef" message="#[payload]"/>
 	</flow>
 </mule>

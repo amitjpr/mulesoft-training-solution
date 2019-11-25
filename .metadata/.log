@@ -425,3 +425,9 @@ Caused by: org.awaitility.core.ConditionTimeoutException: Pid and anchor files w
 
 !ENTRY org.mule.tooling.maven 1 0 2019-11-22 13:43:03.979
 !MESSAGE  *** 5368 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.ui.contribution.munit 1 1 2019-11-23 22:28:55.798
+!MESSAGE Deleting MUnit temporary folder in /var/folders/l8/4nhkwy812276mgphvzjvfq6rd0kp2b/T/munit-temp-dir
+
+!ENTRY org.mule.tooling.analytics 1 0 2019-11-23 22:28:56.332
+!MESSAGE Analytics shutdown successfully

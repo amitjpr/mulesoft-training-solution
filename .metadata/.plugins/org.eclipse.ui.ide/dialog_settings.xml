@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/using-file-module"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/transform-csv-data"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/hello-world-mule4"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/create-csv-file"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/consumning-webservices"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/consuming-soap-webservices"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/call-java-class-methods"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/apdev-flight-ws"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/training4-american-ws"/>
+		<item value="/Users/amiagraw1/Documents/mulesoft-training-solution/apdev-examples"/>
+	</list>
+</section>
