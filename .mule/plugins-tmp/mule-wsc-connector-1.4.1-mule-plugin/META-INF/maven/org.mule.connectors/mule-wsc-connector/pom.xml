@@ -32,7 +32,7 @@
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 
         <!-- tests props -->
-        <jettyVersion>9.4.24.v20191120</jettyVersion>
+        <jettyVersion>11.0.1</jettyVersion>
         <xmlUnitVersion>1.6</xmlUnitVersion>
         <jsonassert.version>1.5.0</jsonassert.version>
 
