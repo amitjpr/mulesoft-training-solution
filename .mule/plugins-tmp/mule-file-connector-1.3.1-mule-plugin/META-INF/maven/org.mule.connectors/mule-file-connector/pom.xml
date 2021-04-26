@@ -20,7 +20,7 @@
 
     <properties>
         <commonsLangVersion>3.7</commonsLangVersion>
-        <commonsIoVersion>2.6</commonsIoVersion>
+        <commonsIoVersion>2.7</commonsIoVersion>
         <muleFileCommonsVersion>1.2.1</muleFileCommonsVersion>
 
         <munit.input.directory>src/test/munit</munit.input.directory>
