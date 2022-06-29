@@ -26,7 +26,7 @@
         <commonsIoVersion>2.7</commonsIoVersion>
         <mockito-core.version>2.23.4</mockito-core.version>
         <xmlunit.version>1.6</xmlunit.version>
-        <derbyVersion>10.11.1.1</derbyVersion>
+        <derbyVersion>10.14.2.0</derbyVersion>
         <mySqlVersion>8.0.16</mySqlVersion>
         <caffeineVersion>2.6.2</caffeineVersion>
         <javax.transaction.version>1.2</javax.transaction.version>
