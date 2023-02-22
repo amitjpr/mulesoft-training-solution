@@ -29,7 +29,7 @@
         <mule.service.scheduler.version>1.1.7</mule.service.scheduler.version>
         <project.reactor.version>3.2.0.M1</project.reactor.version>
         <rest.assured.version>3.2.0</rest.assured.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <httpmime.version>4.5.8</httpmime.version>
 
         <javaFormatter.plugin.version>1.9.0</javaFormatter.plugin.version>
