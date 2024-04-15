@@ -19,7 +19,7 @@
     <description>Mule connector lets you easily send and receive messages to queues and topics for any message service which implements the JMS specification</description>
 
     <properties>
-        <activemq.version>5.14.5</activemq.version>
+        <activemq.version>5.15.16</activemq.version>
         <artemisVersion>2.1.0</artemisVersion>
         <javaxJmsApiVersion>2.0.1</javaxJmsApiVersion>
         <commonsIoVersion>2.6</commonsIoVersion>
