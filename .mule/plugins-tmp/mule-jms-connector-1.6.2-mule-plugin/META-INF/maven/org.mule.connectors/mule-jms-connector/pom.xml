@@ -24,7 +24,7 @@
         <javaxJmsApiVersion>2.0.1</javaxJmsApiVersion>
         <commonsIoVersion>2.6</commonsIoVersion>
         <commonsLangVersion>3.7</commonsLangVersion>
-        <guavaVersion>25.1-jre</guavaVersion>
+        <guavaVersion>32.0.0-jre</guavaVersion>
         <springVersion>5.1.6.RELEASE</springVersion>
         <jacksonVersion>2.9.9</jacksonVersion>
         <hawtbufVersion>1.1</hawtbufVersion>
