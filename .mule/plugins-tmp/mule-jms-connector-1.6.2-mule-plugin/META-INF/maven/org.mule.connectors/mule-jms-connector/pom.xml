@@ -26,7 +26,7 @@
         <commonsLangVersion>3.7</commonsLangVersion>
         <guavaVersion>25.1-jre</guavaVersion>
         <springVersion>5.1.6.RELEASE</springVersion>
-        <jacksonVersion>2.9.9</jacksonVersion>
+        <jacksonVersion>2.12.7.1</jacksonVersion>
         <hawtbufVersion>1.1</hawtbufVersion>
         <muleSpringModuleVersion>1.2.0</muleSpringModuleVersion>
         <formatterConfigPath>formatter.xml</formatterConfigPath>
